@@ -13,3 +13,4 @@ web-sys = { version = "0.3.77", features = [ "console" ] }
 js-sys = "0.3.77"
 hex = "0.4.3"
 blake2b-ref = "0.3.1"
+getrandom = { version = "0.2", features = ["js"] }
