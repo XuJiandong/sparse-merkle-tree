@@ -27,6 +27,8 @@ BUILD_DIR :=
 # However if this is not the case, you can tweak this variable. As the name hints,
 # more than one binary is supported here.
 BINARIES := $(notdir $(shell pwd))
+SMT_COUNT := 16
+SMT_LEAVES := 1
 
 ifeq (release,$(MODE))
 	MODE_ARGS := --release
@@ -55,7 +57,7 @@ fmt:
 	cargo fmt $(CARGO_ARGS)
 
 test: build
-	proof=$$(cargo run --manifest-path=$(TOP)../../Cargo.toml --bin generate-proof 2>/dev/null); \
+	proof=$$(cargo run --manifest-path=$(TOP)../../Cargo.toml --bin generate-proof $(SMT_COUNT) $(SMT_LEAVES) 42 2>/dev/null); \
 	ckb-debugger --bin $(TOP)target/riscv64imac-unknown-none-elf/release/smt-nostd-runner -- $$proof
 
 	

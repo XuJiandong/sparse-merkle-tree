@@ -20,12 +20,18 @@ All key-value pairs must be provided together; an odd number of remaining argume
 ## Build
 
 ```bash
-# Build the release binary
 make build
 ```
 
-## Features
+## Benchmark
 
-| Feature      | Description                          |
-|--------------|--------------------------------------|
-| `enable_log` | Enable logging via `ckb-std` logger  |
+| Key/Value Pairs in Merkle Tree | Key/Value Pairs Verified at the Same Time | Cycles |
+| -------------------------------- | ----------------------------------------- | ------ |
+| 16                               | 1                                         | 116 K  |
+| 256                              | 1                                         | 155 K  |
+| 2,048                            | 1                                         | 150 K  |
+| 16,384                           | 1                                         | 174 K  |
+| 131,072                          | 1                                         | 203 K  |
+| 131,072                          | 10                                        | 1,923 K |
+| 131,072                          | 20                                        | 3,632 K |
+| 131,072                          | 40                                        | 6,919 K |
