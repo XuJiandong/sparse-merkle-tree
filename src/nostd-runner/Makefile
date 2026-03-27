@@ -37,7 +37,7 @@ endif
 default: build test
 
 build:
-	RUSTFLAGS="$(FULL_RUSTFLAGS)" TARGET_CC="$(CLANG)" TARGET_AR="$(AR)" \
+	RUSTFLAGS="$(FULL_RUSTFLAGS)" CLANG="$(CLANG)" TARGET_CC="$(CLANG)" TARGET_AR="$(AR)" \
 		cargo build --target=riscv64imac-unknown-none-elf $(MODE_ARGS) $(CARGO_ARGS)
 	@set -eu; \
 	if [ "x$(BUILD_DIR)" != "x" ]; then \
