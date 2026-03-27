@@ -25,6 +25,9 @@ make build
 
 ## Benchmark
 
+make SMT_COUNT=16 SMT_LEAVES=1 test
+make SMT_COUNT=131072 SMT_LEAVES=1 test
+
 | Key/Value Pairs in Merkle Tree | Key/Value Pairs Verified at the Same Time | Cycles |
 | -------------------------------- | ----------------------------------------- | ------ |
 | 16                               | 1                                         | 116 K  |
