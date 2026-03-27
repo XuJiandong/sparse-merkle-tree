@@ -57,7 +57,7 @@ fmt:
 	cargo fmt $(CARGO_ARGS)
 
 test: build
-	proof=$$(cargo run --features=rand --manifest-path=$(TOP)../../Cargo.toml --bin generate-proof $(SMT_COUNT) $(SMT_LEAVES) 42 2>/dev/null); \
+	proof=$$(cargo run --features=rand,trie --manifest-path=$(TOP)../../Cargo.toml --bin generate-proof $(SMT_COUNT) $(SMT_LEAVES) 42 2>/dev/null); \
 	ckb-debugger --bin $(TOP)target/riscv64imac-unknown-none-elf/release/smt-nostd-runner -- $$proof
 
 	
