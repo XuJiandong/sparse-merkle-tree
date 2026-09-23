@@ -35,6 +35,14 @@ blake2b-ref = { version = "0.3.1", optional = true }
 rand = { version = "0.8", optional = true }
 
 [dev-dependencies]
+# Enables the storage-optimized `trie` backend for development targets
+# (examples/tests/benches) without changing the crate's published default
+# features. Without shortcut nodes every leaf keeps a branch node at all 256
+# levels, so building a 100k-leaf tree means ~24M branch nodes and dominates
+# runtime (see examples/proof_size.rs). `default-features = false` keeps this
+# edge from force-enabling `with-blake2b-rs` and masking the
+# `with-blake2b-ref` test matrix.
+sparse-merkle-tree = { path = ".", default-features = false, features = ["std", "trie"] }
 proptest = "0.9"
 criterion = "0.2"
 rand = "0.8"
